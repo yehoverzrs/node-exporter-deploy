@@ -10,6 +10,8 @@ metadata:
   namespace: monitoring
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: node-exporter
@@ -23,7 +25,7 @@ spec:
       containers:
       - name: node-exporter
         image: node-exporter:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Never
         ports:
         - containerPort: 9100
           hostPort: 9100
